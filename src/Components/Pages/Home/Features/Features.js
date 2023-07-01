@@ -5,7 +5,7 @@ import Feature from './Feature';
 const Features = () => {
 
     const {data : sponsors=[]} = useQuery({
-        queryKey : ['products'],
+        queryKey : ['sponsors'],
         queryFn : async()=>{
             const res = await fetch('http://localhost:5000/sponsors');
             const data =await res.json();

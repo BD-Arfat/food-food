@@ -9,7 +9,7 @@ const Navbar = () => {
         <li className='font-bold'><Link>About</Link></li>
         {
             user?.uid ? <>
-                <li className='font-bold'><Link>Products</Link></li>
+                <li className='font-bold'><Link to={'/product'}>Products</Link></li>
                 <li className='font-bold'><Link>your-Review</Link></li>
                 <li className='font-bold'><Link>Add-Product</Link></li>
                 <li className='font-bold'><Link>Your-Product</Link></li>

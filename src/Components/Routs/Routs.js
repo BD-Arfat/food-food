@@ -5,6 +5,9 @@ import Error from "../Error/Error";
 import Form from "../Maine/Form";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import Products from "../Products/Products";
+import ProductLaouts from "../Products/ProductLaouts";
+import Drink from "../Products/Drink/Drink";
 
 export const route = createBrowserRouter([
     {
@@ -14,6 +17,20 @@ export const route = createBrowserRouter([
             {
                 path : '/',
                 element : <Home/>
+            },
+            {
+                path : '/product',
+                element : <ProductLaouts/>,
+                children : [
+                    {
+                        path : '/product',
+                        element : <Products/>
+                    },
+                    {
+                        path : '/product/drink',
+                        element : <Drink/>
+                    }
+                ]
             }
         ],
     },
