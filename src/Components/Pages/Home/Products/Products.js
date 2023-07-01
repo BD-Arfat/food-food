@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import SingelProduct from './SingelProduct';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
 
@@ -22,7 +23,7 @@ const Products = () => {
                     product.map(items => <SingelProduct key={items._id} items={items}></SingelProduct>)
                 }
             </div>
-            <button className='btn btn-warning w-96 mx-auto mt-11'>More Products</button>
+            <Link to={'/product'} className='btn btn-warning w-96 mx-auto mt-11'>More Products</Link>
         </div>
     );
 };

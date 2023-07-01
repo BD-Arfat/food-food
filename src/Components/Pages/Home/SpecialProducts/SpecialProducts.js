@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import Product from './Product';
+import { Link } from 'react-router-dom';
 
 const SpecialProducts = () => {
 
@@ -21,7 +22,7 @@ const SpecialProducts = () => {
                 }
             </div>
             <div>
-                <button className='btn btn-warning w-96 mx-auto mt-11'>See More</button>
+                <Link to={'/product/drink'} className='btn btn-warning w-96 mx-auto mt-11'>See More</Link>
             </div>
         </div>
     );

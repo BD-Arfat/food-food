@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingelProduct = ({items}) => {
-    const {name, image, description, price, rating} =items
+    const {name, image, description, price, rating, _id} =items
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl border-2 border-white">
             <figure><img src={image} alt="Shoes" className='w-full h-[350px]'/></figure>
@@ -15,7 +16,7 @@ const SingelProduct = ({items}) => {
                     Description : {description}
                 </p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-warning px-11 mt-4 w-full">Buy Now</button>
+                    <Link to={`/Details/${_id}`} className="btn btn-warning px-11 mt-4 w-full">Buy Now</Link>
                 </div>
             </div>
         </div>

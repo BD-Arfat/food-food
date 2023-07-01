@@ -1,28 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import SingelProducts from './SingelProducts';
+import Product from './Product';
 
 const Products = () => {
 
-    const {data : products=[]} = useQuery({
-        queryKey : ['products'],
-        queryFn : async()=>{
-            const res = await fetch('http://localhost:5000/products');
-            const data =await res.json();
-            return data;
-        }
-    })
+    const [inputText, setInputText] = useState("");
+    let inputHandler = (e) => {
+        //convert input text to lower case
+        var lowerCase = e.target.value.toLowerCase();
+        setInputText(lowerCase);
+    };
 
     return (
         <div className='mb-28'>
             <div>
                 <h1 className='text-white font-bold text-center text-5xl mt-14'>Take the product of your choice.</h1>
             </div>
-            <div className='grid grid-cols-3 mt-24 w-11/12 mx-auto gap-14'>
-                {
-                    products.map(items => <SingelProducts key={items._id} items={items}></SingelProducts>)
-                }
+            <div className="form-control mt-20 mx-56">
+                <input onChange={inputHandler} type="text" placeholder="Search" className="input input-bordered input-warning" />
             </div>
+            <Product input={inputText} />
         </div>
     );
 };

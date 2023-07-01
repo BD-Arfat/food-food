@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingelDrink = ({items}) => {
-    const { name, price, image } = items;
+    const { name, price, image, _id } = items;
 
     return (
         <div className="card w-96 bg-base-100 shadow-2xl border-2 border-orange-600">
@@ -19,7 +20,7 @@ const SingelDrink = ({items}) => {
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                 </div>
                 <div className="card-actions w-full mt-4">
-                    <button className="btn btn-outline btn-warning w-full">Buy Now</button>
+                    <Link to={`/drinkDetails/${_id}`} className="btn btn-outline btn-warning w-full">Buy Now</Link>
                 </div>
             </div>
         </div>
