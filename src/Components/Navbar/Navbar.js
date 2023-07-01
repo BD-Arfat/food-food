@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContextProvider';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext)
     const items = <>
         <li className='font-bold'><Link>Home</Link></li>
         <li className='font-bold'><Link>About</Link></li>
-        <li className='font-bold'><Link>Products</Link></li>
-        <li className='font-bold'><Link>your-Review</Link></li>
-        <li className='font-bold'><Link>Add-Product</Link></li>
-        <li className='font-bold'><Link>Your-Product</Link></li>
-        <li className='font-bold'><Link>add-seller</Link></li>
+        {
+            user?.uid ? <>
+                <li className='font-bold'><Link>Products</Link></li>
+                <li className='font-bold'><Link>your-Review</Link></li>
+                <li className='font-bold'><Link>Add-Product</Link></li>
+                <li className='font-bold'><Link>Your-Product</Link></li>
+                <li className='font-bold'><Link>add-seller</Link></li>
+            </>
+                :
+                null
+        }
     </>
+
+
+    const handelLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
+
     return (
         <div className="navbar bg-green-800 text-white lg:px-16">
             <div className="navbar-start">
@@ -26,11 +46,16 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                   {items}
+                    {items}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn btn-warning px-14">Login</Link>
+                {
+                    user?.uid ?
+                        <Link onClick={handelLogout} to={'/login'} className="btn btn-neutral px-10 text-white">Log-Out</Link>
+                        :
+                        <Link to={'/login'} className="btn btn-neutral px-10 text-white">Login</Link>
+                }
             </div>
         </div>
     );

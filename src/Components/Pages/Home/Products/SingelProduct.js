@@ -8,7 +8,7 @@ const SingelProduct = ({items}) => {
             <div className="card-body text-white">
                 <h2 className="card-title">Name : {name}</h2>
                 <div className='flex justify-between items-center'>
-                <p className=' text-left text-lg font-bold text-green-300'>Price : {price}</p>
+                <p className=' text-left text-lg font-bold text-green-300'>Price : {price}$</p>
                 <p className=' text-left text-lg font-bold text-green-300'>Rating : {rating}</p>
                 </div>
                 <p className=' text-left mt-3'>
